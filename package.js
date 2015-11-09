@@ -34,7 +34,8 @@ Package.onUse(function (api) {
         'lib/client/main.js',
         // validators
         'lib/client/validators/required.js',
-        'lib/client/validators/minlength.js'
+        'lib/client/validators/minlength.js',
+        'lib/client/validators/maxlength.js'
     ], client);
 
 });
