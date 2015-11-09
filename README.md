@@ -1,11 +1,11 @@
 FormlyValidator
 ==========
 
-Automate fields validation in Angular-Formly.
+Automate fields validation in [Angular-Formly].
 
 ## Add Angular Formly
 
-There is no official [Angular Formly] package in Atmosphere so you have to add it manually.
+There is no official [Angular-Formly] package in Atmosphere so you have to add it manually.
 
 ## Install
 
@@ -62,6 +62,32 @@ formlyTransformer.transform(vm.fields, {
 });
 ```
 
+## Built-in validators
+
+### required
+
+```
+{
+    required: <boolean>
+}
+```
+
+### minlength
+
+```
+{
+    minlength: <integer>
+}
+```
+
+### maxlength
+
+```
+{
+    maxlength: <integer>
+}
+```
+
 
 ## Example
 
@@ -75,8 +101,8 @@ angular.module('myAppName', [
   function demoCtrl(formlyValidator, formlyTransformer) {
         var vm = this;
         
-        // register required validator
-        formlyValidator.register('required', function(configValue, $viewValue, $modelValue) {
+        // register customRequired validator
+        formlyValidator.register('customRequired', function(configValue, $viewValue, $modelValue) {
             if(configValue !== true) {
                 return true;
             }
@@ -94,9 +120,12 @@ angular.module('myAppName', [
         
         formlyTransformer.transform(vm.fields, {
             firstName: {
-                required: true
+                customRequired: true
             }
         });
+        
+        // if firstName value is empty
+        // then $scope.form.firstName.$error contain customRequired === false
   }
   
 ```
