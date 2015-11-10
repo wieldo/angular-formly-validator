@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Helper method (isEmpty) to check if value is empty
 - Min number validator (minnumber)
 - Max number validator (maxnumber)
+- Pattern validator (pattern)
 - String to RegExp parser as helper method (parseRegExp)
 
 ### Fixed
