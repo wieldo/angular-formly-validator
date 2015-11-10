@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Helper method (isEmpty) to check if value is empty
+
+### Fixed
+- Use of angular.isEmpty function in maxlength and minlength validators
 
 ## [0.0.3] - 2015-11-10
 ### Fixed
