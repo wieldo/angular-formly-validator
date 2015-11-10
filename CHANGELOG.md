@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Helper method (isEmpty) to check if value is empty
 - Min number validator (minnumber)
+- Max number validator (maxnumber)
 
 ### Fixed
 - Use of angular.isEmpty function in maxlength and minlength validators
