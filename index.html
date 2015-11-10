@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Angular-formly-validator by wieldo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Angular-formly-validator</h1>
+      <h2 class="project-tagline">Use set of built-in validators in your project. This module extends angular-formly-transformer.</h2>
+      <a href="https://github.com/wieldo/angular-formly-validator" class="btn">View on GitHub</a>
+      <a href="https://github.com/wieldo/angular-formly-validator/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/wieldo/angular-formly-validator/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="formlyvalidator" class="anchor" href="#formlyvalidator" aria-hidden="true"><span class="octicon octicon-link"></span></a>FormlyValidator</h1>
+
+<p>Automate fields validation in <a href="http://angular-formly.com">Angular-Formly</a>.</p>
+
+<h2>
+<a id="add-angular-formly" class="anchor" href="#add-angular-formly" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add Angular Formly</h2>
+
+<p>There is no official <a href="http://angular-formly.com">Angular-Formly</a> package in Atmosphere so you have to add it manually.</p>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<pre><code>meteor add wieldo:angular-formly-validator
+</code></pre>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<ol>
+<li>Add package using <code>meteor add</code> (see above)</li>
+<li>Add angular-formly files to your project</li>
+<li>Add the following dependencies to your AngularJS module:</li>
+</ol>
+
+<div class="highlight highlight-source-js"><pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>myApp<span class="pl-pds">'</span></span>, [
+    <span class="pl-s"><span class="pl-pds">'</span>formly<span class="pl-pds">'</span></span>,
+    <span class="pl-s"><span class="pl-pds">'</span>formlyValidator<span class="pl-pds">'</span></span>
+  ])</pre></div>
+
+<h2>
+<a id="how-to-use-it" class="anchor" href="#how-to-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use it</h2>
+
+<h3>
+<a id="register-validator" class="anchor" href="#register-validator" aria-hidden="true"><span class="octicon octicon-link"></span></a>Register validator</h3>
+
+<p>Each validator has unique name and expression function.</p>
+
+<ul>
+<li>
+<strong>name</strong> - validator name</li>
+<li>
+<strong>expression</strong> - expression which returns boolean value.</li>
+</ul>
+
+<p>Expression has four arguments.<br>
+First one has been added by this package. Other three are standard arguments of angular-formly's expression.</p>
+
+<ul>
+<li>
+<strong>config</strong> - validator configuration (may be object or just value)</li>
+<li>
+<strong>$viewValue</strong> - see <a href="http://docs.angular-formly.com/v7.2.3/docs/formly-expressions">Angular-Formly expressions</a>
+</li>
+<li>
+<strong>$modelValue</strong> </li>
+<li><strong>scope</strong></li>
+</ul>
+
+<div class="highlight highlight-source-js"><pre>formlyValidator.register(<span class="pl-s"><span class="pl-pds">'</span>required<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">config</span>, <span class="pl-smi">$viewValue</span>, <span class="pl-smi">$modelValue</span>, <span class="pl-smi">scope</span>) {
+    <span class="pl-k">return</span> <span class="pl-c1">true</span>;
+});</pre></div>
+
+<h3>
+<a id="use-formlytransformer" class="anchor" href="#use-formlytransformer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use formlyTransformer</h3>
+
+<p>See <a href="https://github.com/wieldo/angular-formly-transformer/blob/master/README.md">formlyTransformer</a></p>
+
+<div class="highlight highlight-source-js"><pre>formlyTransformer.transform(vm.fields, {
+    fieldKey<span class="pl-k">:</span> {
+        validatorName<span class="pl-k">:</span> validatorConfig
+    }
+});</pre></div>
+
+<h2>
+<a id="built-in-validators" class="anchor" href="#built-in-validators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Built-in validators</h2>
+
+<h3>
+<a id="required" class="anchor" href="#required" aria-hidden="true"><span class="octicon octicon-link"></span></a>required</h3>
+
+<pre><code>{
+    required: &lt;boolean&gt;
+}
+</code></pre>
+
+<h3>
+<a id="minlength" class="anchor" href="#minlength" aria-hidden="true"><span class="octicon octicon-link"></span></a>minlength</h3>
+
+<pre><code>{
+    minlength: &lt;integer&gt;
+}
+</code></pre>
+
+<h3>
+<a id="maxlength" class="anchor" href="#maxlength" aria-hidden="true"><span class="octicon octicon-link"></span></a>maxlength</h3>
+
+<pre><code>{
+    maxlength: &lt;integer&gt;
+}
+</code></pre>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<div class="highlight highlight-source-js"><pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>myAppName<span class="pl-pds">'</span></span>, [
+    <span class="pl-s"><span class="pl-pds">'</span>formly<span class="pl-pds">'</span></span>,
+    <span class="pl-s"><span class="pl-pds">'</span>formlyValidator<span class="pl-pds">'</span></span>
+  ])
+  .controller(<span class="pl-s"><span class="pl-pds">'</span>demoCtrl<span class="pl-pds">'</span></span>, demoCtrl);
+
+  <span class="pl-k">function</span> <span class="pl-en">demoCtrl</span>(<span class="pl-smi">formlyValidator</span>, <span class="pl-smi">formlyTransformer</span>) {
+        <span class="pl-k">var</span> vm <span class="pl-k">=</span> <span class="pl-v">this</span>;
+
+        <span class="pl-c">// register customRequired validator</span>
+        formlyValidator.register(<span class="pl-s"><span class="pl-pds">'</span>customRequired<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">configValue</span>, <span class="pl-smi">$viewValue</span>, <span class="pl-smi">$modelValue</span>) {
+            <span class="pl-k">if</span>(configValue <span class="pl-k">!==</span> <span class="pl-c1">true</span>) {
+                <span class="pl-k">return</span> <span class="pl-c1">true</span>;
+            }
+            <span class="pl-k">var</span> value <span class="pl-k">=</span> $viewValue <span class="pl-k">||</span> $modelValue;
+            <span class="pl-k">return</span> (value <span class="pl-k">&amp;&amp;</span> value <span class="pl-k">!==</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>) <span class="pl-k">===</span> <span class="pl-c1">true</span>;
+        });
+
+        vm.fields <span class="pl-k">=</span> [
+            key<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>firstName<span class="pl-pds">'</span></span>,
+            type<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>input<span class="pl-pds">'</span></span>,
+            templateOptions<span class="pl-k">:</span> {
+                label<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>First name<span class="pl-pds">"</span></span>
+            }
+        ];
+
+        formlyTransformer.transform(vm.fields, {
+            firstName<span class="pl-k">:</span> {
+                customRequired<span class="pl-k">:</span> <span class="pl-c1">true</span>
+            }
+        });
+
+        <span class="pl-c">// if firstName value is empty</span>
+        <span class="pl-c">// then $scope.form.firstName.$error contain customRequired === false</span>
+  }
+</pre></div>
+
+<p><a href="https://bitdeli.com/free" title="Bitdeli Badge"><img src="https://d2weczhvl823v0.cloudfront.net/wieldo/angular-formly-validator/trend.png" alt="Bitdeli Badge"></a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/wieldo/angular-formly-validator">Angular-formly-validator</a> is maintained by <a href="https://github.com/wieldo">wieldo</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-69932737-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
