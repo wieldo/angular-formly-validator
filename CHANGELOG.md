@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Min number validator (minnumber)
 - Max number validator (maxnumber)
 - Pattern validator (pattern)
+- Negation of pattern validator (notpattern)
 - String to RegExp parser as helper method (parseRegExp)
 
 ### Fixed
