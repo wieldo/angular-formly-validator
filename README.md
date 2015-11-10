@@ -88,6 +88,42 @@ formlyTransformer.transform(vm.fields, {
 }
 ```
 
+### minnumber
+
+```
+{
+    minnumber: <integer>
+}
+```
+
+### maxnumber
+
+```
+{
+    maxnumber: <integer>
+}
+```
+
+### pattern
+
+Check if model matches pattern
+
+```
+{
+    pattern: <RegExp|string>
+}
+```
+
+### notpattern
+
+Check if model does not match pattern (negation of pattern)
+
+```
+{
+    notpattern: <RegExp|string>
+}
+```
+
 
 ## Example
 
