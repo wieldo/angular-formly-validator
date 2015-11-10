@@ -133,3 +133,5 @@ angular.module('myAppName', [
 [Angular-Formly]: http://angular-formly.com
 [Angular-Formly expressions]: http://docs.angular-formly.com/v7.2.3/docs/formly-expressions
 [formlyTransformer]: https://github.com/wieldo/angular-formly-transformer/blob/master/README.md
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/wieldo/angular-formly-validator/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
