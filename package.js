@@ -34,6 +34,7 @@ Package.onUse(function (api) {
 
     api.addFiles([
         'lib/client/main.js',
+        'lib/client/formly-validator.js',
         // validators
         'lib/client/validators/required.js',
         'lib/client/validators/minlength.js',
