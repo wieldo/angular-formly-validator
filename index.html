@@ -24,16 +24,15 @@
 
 <p>Automate fields validation in <a href="http://angular-formly.com">Angular-Formly</a>.</p>
 
-<h2>
-<a id="add-angular-formly" class="anchor" href="#add-angular-formly" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add Angular Formly</h2>
-
-<p>There is no official <a href="http://angular-formly.com">Angular-Formly</a> package in Atmosphere so you have to add it manually.</p>
+<h2></h2>
 
 <h2>
 <a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
 
 <pre><code>meteor add wieldo:angular-formly-validator
 </code></pre>
+
+<h2></h2>
 
 <h2>
 <a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h2>
@@ -48,6 +47,8 @@
     <span class="pl-s"><span class="pl-pds">'</span>formly<span class="pl-pds">'</span></span>,
     <span class="pl-s"><span class="pl-pds">'</span>formlyValidator<span class="pl-pds">'</span></span>
   ])</pre></div>
+
+<h2></h2>
 
 <h2>
 <a id="how-to-use-it" class="anchor" href="#how-to-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use it</h2>
@@ -83,15 +84,175 @@ First one has been added by this package. Other three are standard arguments of 
 });</pre></div>
 
 <h3>
-<a id="use-formlytransformer" class="anchor" href="#use-formlytransformer" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use formlyTransformer</h3>
+<a id="set-validator-for-formly-field" class="anchor" href="#set-validator-for-formly-field" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set validator for formly field</h3>
 
-<p>See <a href="https://github.com/wieldo/angular-formly-transformer/blob/master/README.md">formlyTransformer</a></p>
+<p>In field configuration, use structure below:</p>
 
-<div class="highlight highlight-source-js"><pre>formlyTransformer.transform(vm.fields, {
-    fieldKey<span class="pl-k">:</span> {
-        validatorName<span class="pl-k">:</span> validatorConfig
+<pre><code>{
+    transformers: {
+        validators: {
+            validatorName: validatorConfig
+        }
     }
-});</pre></div>
+}
+</code></pre>
+
+<h2>
+<a id="formlyvalidator-service" class="anchor" href="#formlyvalidator-service" aria-hidden="true"><span class="octicon octicon-link"></span></a>formlyValidator service</h2>
+
+<h3>
+<a id="formlyvalidatorregistername-expression" class="anchor" href="#formlyvalidatorregistername-expression" aria-hidden="true"><span class="octicon octicon-link"></span></a><a name="formlyValidator.register"></a><em>formlyValidator</em>.register(name, expression)</h3>
+
+<p><strong>Arguments</strong></p>
+
+<ul>
+<li>
+<p><strong>name</strong> <em>{String}</em>  </p>
+
+<p>Validator name. Used to identify validator in formly field configuration</p>
+</li>
+<li>
+<p><strong>expression</strong> <em>{Function}</em>  </p>
+
+<p>Function with four arguments (config, $viewValue, $modelValue, $scope). Config is the field's validator configuration.
+See <a href="http://docs.angular-formly.com/v7.2.3/docs/formly-expressions">Angular-Formly expressions</a>.</p>
+</li>
+</ul>
+
+<p><strong>Returns</strong>  <em>{undefined}</em></p>
+
+<h2></h2>
+
+<h3>
+<a id="formlyvalidatorsetfieldvalidatorfield-name-config" class="anchor" href="#formlyvalidatorsetfieldvalidatorfield-name-config" aria-hidden="true"><span class="octicon octicon-link"></span></a><a name="formlyValidator.setFieldValidator"></a><em>formlyValidator</em>.setFieldValidator(field, name, config)</h3>
+
+<p><strong>Arguments</strong></p>
+
+<ul>
+<li>
+<p><strong>field</strong> <em>{Object}</em>  </p>
+
+<p>Formly field configuration.</p>
+</li>
+<li>
+<p><strong>name</strong> <em>{String}</em>  </p>
+
+<p>Validator name</p>
+</li>
+<li>
+<p><strong>config</strong> <em>{</em>}*  </p>
+
+<p>Validator configuration for field</p>
+</li>
+</ul>
+
+<p><strong>Returns</strong>  <em>{undefined}</em></p>
+
+<p>Defined validator configuration for field</p>
+
+<h2></h2>
+
+<h3>
+<a id="formlyvalidatorgetfieldvalidatorfield-name" class="anchor" href="#formlyvalidatorgetfieldvalidatorfield-name" aria-hidden="true"><span class="octicon octicon-link"></span></a><a name="formlyValidator.getFieldValidator"></a><em>formlyValidator</em>.getFieldValidator(field, name)</h3>
+
+<p><strong>Arguments</strong></p>
+
+<ul>
+<li>
+<p><strong>field</strong> <em>{Object}</em>  </p>
+
+<p>Formly field configuration.</p>
+</li>
+<li>
+<p><strong>name</strong> <em>{String}</em>  </p>
+
+<p>Validator name</p>
+</li>
+</ul>
+
+<p><strong>Returns</strong>  <em>{</em>}*</p>
+
+<p>Returns validator configuration for field</p>
+
+<h2></h2>
+
+<h3>
+<a id="formlyvalidatorcreateerrormsg" class="anchor" href="#formlyvalidatorcreateerrormsg" aria-hidden="true"><span class="octicon octicon-link"></span></a><a name="formlyValidator.createError"></a><em>formlyValidator</em>.createError(msg)</h3>
+
+<p><strong>Arguments</strong></p>
+
+<ul>
+<li>
+<p><strong>msg</strong> <em>{String}</em>  </p>
+
+<p>Error message</p>
+</li>
+</ul>
+
+<p><strong>Returns</strong>  <em>{Error}</em></p>
+
+<p>Returns Error object with prefixed message.</p>
+
+<pre><code>[FormlyValidator] &lt;msg&gt;
+</code></pre>
+
+<h2></h2>
+
+<h3>
+<a id="formlyvalidatorisemptyvalue" class="anchor" href="#formlyvalidatorisemptyvalue" aria-hidden="true"><span class="octicon octicon-link"></span></a><a name="formlyValidator.isEmpty"></a><em>formlyValidator</em>.isEmpty(value)</h3>
+
+<p><strong>Arguments</strong></p>
+
+<ul>
+<li>
+<p><strong>value</strong> <em>{</em>}*  </p>
+
+<p>Variable to check</p>
+</li>
+</ul>
+
+<p><strong>Returns</strong>  <em>{Boolean}</em></p>
+
+<p>Checks if variable is empty.</p>
+
+<h2></h2>
+
+<h3>
+<a id="formlyvalidatorparseregexpregexp" class="anchor" href="#formlyvalidatorparseregexpregexp" aria-hidden="true"><span class="octicon octicon-link"></span></a><a name="formlyValidator.parseRegExp"></a><em>formlyValidator</em>.parseRegExp(regexp)</h3>
+
+<p><strong>Arguments</strong></p>
+
+<ul>
+<li>
+<p><strong>regexp</strong> <em>{String|RegExp}</em>  </p>
+
+<p>Pattern</p>
+</li>
+</ul>
+
+<p><strong>Returns</strong>  <em>{RegExp|Undefined}</em></p>
+
+<p>You can put string representation of RegExp object (for example "[a-z]+") or just RegExp object.
+Adds <code>^</code> and <code>$</code> to string representation and returns <code>undefined</code> if argument of function is not a string or RegExp.   </p>
+
+<h2></h2>
+
+<h2>
+<a id="helper-methods" class="anchor" href="#helper-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Helper methods</h2>
+
+<p>Each validator has build-in helper methods.</p>
+
+<h3>
+<a id="thiscreateerrormsgstring" class="anchor" href="#thiscreateerrormsgstring" aria-hidden="true"><span class="octicon octicon-link"></span></a>this.createError(msg:string)</h3>
+
+<p><strong><a href="https://github.com/returns" class="user-mention">@returns</a> <em>Error</em></strong></p>
+
+<p>Throws Error with this message syntax</p>
+
+<pre><code>[formlyValidator] [validatorName] &lt;msg&gt;
+</code></pre>
+
+<h2></h2>
 
 <h2>
 <a id="built-in-validators" class="anchor" href="#built-in-validators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Built-in validators</h2>
@@ -120,6 +281,44 @@ First one has been added by this package. Other three are standard arguments of 
 }
 </code></pre>
 
+<h3>
+<a id="minnumber" class="anchor" href="#minnumber" aria-hidden="true"><span class="octicon octicon-link"></span></a>minnumber</h3>
+
+<pre><code>{
+    minnumber: &lt;integer&gt;
+}
+</code></pre>
+
+<h3>
+<a id="maxnumber" class="anchor" href="#maxnumber" aria-hidden="true"><span class="octicon octicon-link"></span></a>maxnumber</h3>
+
+<pre><code>{
+    maxnumber: &lt;integer&gt;
+}
+</code></pre>
+
+<h3>
+<a id="pattern" class="anchor" href="#pattern" aria-hidden="true"><span class="octicon octicon-link"></span></a>pattern</h3>
+
+<p>Check if model matches pattern</p>
+
+<pre><code>{
+    pattern: &lt;RegExp|string&gt;
+}
+</code></pre>
+
+<h3>
+<a id="notpattern" class="anchor" href="#notpattern" aria-hidden="true"><span class="octicon octicon-link"></span></a>notpattern</h3>
+
+<p>Check if model does not match pattern (negation of pattern)</p>
+
+<pre><code>{
+    notpattern: &lt;RegExp|string&gt;
+}
+</code></pre>
+
+<h2></h2>
+
 <h2>
 <a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
 
@@ -127,10 +326,10 @@ First one has been added by this package. Other three are standard arguments of 
     <span class="pl-s"><span class="pl-pds">'</span>formly<span class="pl-pds">'</span></span>,
     <span class="pl-s"><span class="pl-pds">'</span>formlyValidator<span class="pl-pds">'</span></span>
   ])
+  .run(runApp)
   .controller(<span class="pl-s"><span class="pl-pds">'</span>demoCtrl<span class="pl-pds">'</span></span>, demoCtrl);
 
-  <span class="pl-k">function</span> <span class="pl-en">demoCtrl</span>(<span class="pl-smi">formlyValidator</span>, <span class="pl-smi">formlyTransformer</span>) {
-        <span class="pl-k">var</span> vm <span class="pl-k">=</span> <span class="pl-v">this</span>;
+  <span class="pl-k">function</span> <span class="pl-en">runApp</span>(<span class="pl-smi">formlyValidator</span>) {
 
         <span class="pl-c">// register customRequired validator</span>
         formlyValidator.register(<span class="pl-s"><span class="pl-pds">'</span>customRequired<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">configValue</span>, <span class="pl-smi">$viewValue</span>, <span class="pl-smi">$modelValue</span>) {
@@ -141,19 +340,23 @@ First one has been added by this package. Other three are standard arguments of 
             <span class="pl-k">return</span> (value <span class="pl-k">&amp;&amp;</span> value <span class="pl-k">!==</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>) <span class="pl-k">===</span> <span class="pl-c1">true</span>;
         });
 
+  }
+
+  <span class="pl-k">function</span> <span class="pl-en">demoCtrl</span>() {
+        <span class="pl-k">var</span> vm <span class="pl-k">=</span> <span class="pl-v">this</span>;
+
         vm.fields <span class="pl-k">=</span> [
             key<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>firstName<span class="pl-pds">'</span></span>,
             type<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>input<span class="pl-pds">'</span></span>,
             templateOptions<span class="pl-k">:</span> {
                 label<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>First name<span class="pl-pds">"</span></span>
+            },
+            transformers<span class="pl-k">:</span> {
+                validators<span class="pl-k">:</span> {
+                    customRequired<span class="pl-k">:</span> <span class="pl-c1">true</span>
+                }
             }
         ];
-
-        formlyTransformer.transform(vm.fields, {
-            firstName<span class="pl-k">:</span> {
-                customRequired<span class="pl-k">:</span> <span class="pl-c1">true</span>
-            }
-        });
 
         <span class="pl-c">// if firstName value is empty</span>
         <span class="pl-c">// then $scope.form.firstName.$error contain customRequired === false</span>
