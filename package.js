@@ -5,7 +5,7 @@ var server = 'server';
 Package.describe({
     name: "wieldo:angular-formly-validator",
     summary: "Use set of built-in validators in your project. This module extends angular-formly-transformer.",
-    version: "0.0.4",
+    version: "1.0.0",
 
     documentation: 'README.md',
     git: 'https://github.com/wieldo/angular-formly-validator.git'
@@ -28,12 +28,13 @@ Package.onUse(function (api) {
     api.imply([
         'angular@1.0.0',
         'angular:angular@1.4.7',
-        'wieldo:angular-formly-transformer@0.0.1',
+        'wieldo:angular-formly-transformer@1.0.0',
         'wieldo:angular-formly@7.3.2'
     ]);
 
     api.addFiles([
         'lib/client/main.js',
+        'lib/client/formly-validator.js',
         // validators
         'lib/client/validators/required.js',
         'lib/client/validators/minlength.js',
