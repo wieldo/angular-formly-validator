@@ -105,7 +105,7 @@ describe('formlyValidator', function () {
         expect(field).toEqual({
             key: 'test',
             transformers: {
-                validator: {
+                validators: {
                     required: true
                 }
             }
@@ -145,7 +145,7 @@ describe('formlyValidator', function () {
         expect(field).toEqual({
             key: 'test',
             transformers: {
-                validator: {
+                validators: {
                     required: true,
                     minlength: 3
                 }
