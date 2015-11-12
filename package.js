@@ -15,7 +15,7 @@ Package.onUse(function (api) {
 
     var packages = [
         'underscore@1.0.4',
-        'es5-shim@4.1.14',
+        'es5-shim@4.1.13',
         'pbastowski:angular-babel@1.0.2',
         'pbastowski:angular2-now@0.3.13',
         'wieldo:angular-formly@7.3.2'
