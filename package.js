@@ -54,7 +54,7 @@ Package.onTest(function(api) {
         'velocity:helpers',
         'velocity:console-reporter',
         'angular:angular-mocks@1.4.7',
-        'wieldo:angular-formly-transformer@1.0.0'
+        'wieldo:angular-formly-validator@1.0.0'
     ]);
 
     api.addFiles([
