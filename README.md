@@ -32,19 +32,6 @@ angular.module('myApp', [
 
 ### Register validator
 
-Each validator has unique name and expression function.
-
-- **name** - validator name
-- **expression** - expression which returns boolean value.
-
-Expression has four arguments.  
-First one has been added by this package. Other three are standard arguments of angular-formly's expression.
-
-- **config** - validator configuration (may be object or just value)
-- **$viewValue** - see [Angular-Formly expressions]
-- **$modelValue** 
-- **scope**
-
 ```javascript
 formlyValidator.register('required', function(config, $viewValue, $modelValue, scope) {
     return true;
@@ -67,115 +54,7 @@ In field configuration, use structure below:
 
 ## formlyValidator service
 
-### <a name="formlyValidator.register"></a>*formlyValidator*.register(name, expression)
-
-__Arguments__
-
-* __name__ *{String}*  
-
- Validator name. Used to identify validator in formly field configuration
-
-* __expression__ *{Function}*  
-
- Function with four arguments (config, $viewValue, $modelValue, $scope). Config is the field's validator configuration.
- See [Angular-Formly expressions].
-
-
-__Returns__  *{undefined}*
-
--
-
-### <a name="formlyValidator.setFieldValidator"></a>*formlyValidator*.setFieldValidator(field, name, config)
-
-__Arguments__
-
-* __field__ *{Object}*  
-
- Formly field configuration.
-
-* __name__ *{String}*  
-
- Validator name
- 
-* __config__ *{*}*  
- 
-  Validator configuration for field
-
-
-__Returns__  *{undefined}*
-
-
-Defined validator configuration for field
-
--
-
-### <a name="formlyValidator.getFieldValidator"></a>*formlyValidator*.getFieldValidator(field, name)
-
-__Arguments__
-
-* __field__ *{Object}*  
-
- Formly field configuration.
-
-* __name__ *{String}*  
-
- Validator name
-
-
-__Returns__  *{*}*
-
-
-Returns validator configuration for field
-
--
-
-### <a name="formlyValidator.createError"></a>*formlyValidator*.createError(msg)
-
-__Arguments__
-
-* __msg__ *{String}*  
-
- Error message
-
-__Returns__  *{Error}*
-
-
-Returns Error object with prefixed message.
-
-```
-[FormlyValidator] <msg>
-```
-
--
-
-### <a name="formlyValidator.isEmpty"></a>*formlyValidator*.isEmpty(value)
-
-__Arguments__
-
-* __value__ *{*}*  
-
- Variable to check
-
-__Returns__  *{Boolean}*
-
-
-Checks if variable is empty.
-
--
-
-### <a name="formlyValidator.parseRegExp"></a>*formlyValidator*.parseRegExp(regexp)
-
-__Arguments__
-
-* __regexp__ *{String|RegExp}*  
-
- Pattern
-
-__Returns__  *{RegExp|Undefined}*
-
-
-You can put string representation of RegExp object (for example "[a-z]+") or just RegExp object.
-Adds `^` and `$` to string representation and returns `undefined` if argument of function is not a string or RegExp.   
+See [formlyValidator](api.md)   
 
 -
 
