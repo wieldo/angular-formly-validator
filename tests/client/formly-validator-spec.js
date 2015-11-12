@@ -61,7 +61,7 @@ describe('formlyValidator', function () {
         });
 
         _.each(objects, function (obj) {
-            expect(formlyValidator.parseRegExp(obj.value)).toBe(obj.expected);
+            expect(formlyValidator.parseRegExp(obj.value)).toEqual(obj.expected);
         });
     });
 
