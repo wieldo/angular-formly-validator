@@ -66,6 +66,7 @@ Package.onTest(function(api) {
         'tests/client/validators/maxlength-spec.js',
         'tests/client/validators/minlength-spec.js',
         'tests/client/validators/pattern-spec.js',
-        'tests/client/validators/notpattern-spec.js'
+        'tests/client/validators/notpattern-spec.js',
+        'tests/client/validators/maxnumber-spec.js'
     ], client);
 });
