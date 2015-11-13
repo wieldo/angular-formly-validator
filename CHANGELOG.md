@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.1.0] - 2015-11-13
 ### Added
 - Tests of setFieldValidator, getFieldValidator, isEmpty, createError and parseRegExp methods
 - Tests of register method
@@ -49,7 +49,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 0.0.1 - 2015-11-09
 
-[Unreleased]: https://github.com/wieldo/angular-formly-validator/compare/v1.0.0...HEAD
+[1.1.0]: https://github.com/wieldo/angular-formly-validator/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/wieldo/angular-formly-validator/compare/v0.0.4...v1.0.0
 [0.0.4]: https://github.com/wieldo/angular-formly-validator/compare/v0.3.0...v0.0.4
 [0.0.3]: https://github.com/wieldo/angular-formly-validator/compare/v0.2.0...v0.0.3
