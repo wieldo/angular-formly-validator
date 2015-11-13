@@ -7,6 +7,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Tests of setFieldValidator, getFieldValidator, isEmpty, createError and parseRegExp methods
 - Tests of register method
 - Restrict validator names to match pattern [a-zA-Z]{3,}
+- Tests of maxlength validator
+- Tests of minlength validator
+- Tests of required validator
 
 ### Fixed
 - Not throwing errors when expression is missing or not a function

@@ -15,7 +15,6 @@ Package.onUse(function (api) {
 
     var packages = [
         'underscore@1.0.4',
-        'es5-shim@4.1.13',
         'pbastowski:angular-babel@1.0.2',
         'pbastowski:angular2-now@0.3.13',
         'wieldo:angular-formly@7.3.2'
@@ -49,6 +48,8 @@ Package.onUse(function (api) {
 
 Package.onTest(function(api) {
     api.use([
+        'pbastowski:angular-babel@1.0.2',
+        'pbastowski:angular2-now@0.3.13',
         'underscore@1.0.4',
         'sanjo:jasmine@0.20.2',
         'velocity:helpers',
@@ -58,6 +59,11 @@ Package.onTest(function(api) {
     ]);
 
     api.addFiles([
-        'tests/client/formly-validator-spec.js'
+        'tests/client/formly-validator-spec.js',
+        'tests/client/validators/test-utils.js',
+        // validators
+        'tests/client/validators/required-spec.js',
+        'tests/client/validators/maxlength-spec.js',
+        'tests/client/validators/minlength-spec.js'
     ], client);
 });
