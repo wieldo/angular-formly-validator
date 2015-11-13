@@ -4,7 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
-- Tests for setFieldValidator, getFieldValidator, isEmpty, createError and parseRegExp methods
+- Tests of setFieldValidator, getFieldValidator, isEmpty, createError and parseRegExp methods
+- Tests of register method
+- Restrict validator names to match pattern [a-zA-Z]{3,}
+
+### Fixed
+- Not throwing errors when expression is missing or not a function
 
 ## [1.0.0] - 2015-11-11
 ### Changed

@@ -1,11 +1,16 @@
 describe('formlyValidator', function () {
     var formlyValidator;
+    var formlyTransformer;
 
     beforeEach(function () {
         module('formlyValidator');
 
-        inject(function (_formlyValidator_) {
+        inject(function (_formlyValidator_, _formlyTransformer_) {
             formlyValidator = _formlyValidator_;
+            formlyTransformer = _formlyTransformer_;
+
+            // reset
+            formlyTransformer._transformers = [];
         });
     });
 
@@ -194,6 +199,125 @@ describe('formlyValidator', function () {
         _.each(fields, function (field) {
             expect(formlyValidator.getFieldValidator(field.field, 'required')).toEqual(field.expected);
         });
+    });
+
+    it('should not register validator with empty name', function () {
+        var names = [null, undefined, ""];
+        _.each(names, function (name) {
+            expect(function () {
+                formlyValidator.register(name, function () {
+                });
+            }).toThrowError();
+        });
+        
+        // check transformers
+        expect(formlyTransformer._transformers.length).toBe(0);
+    });
+
+    it('should not register validator using numbers as name', function () {
+        var names = [1, 0, 2, "1", "0", "2", 1.2, 2.1, -1, "1.2"];
+
+        _.each(names, function (name) {
+            expect(function () {
+                formlyValidator.register(name, function () {
+                });
+            }).toThrowError();
+        });
+
+        // check transformers
+        expect(formlyTransformer._transformers.length).toBe(0);
+    });
+
+    it('should not register validator using boolean values as name', function () {
+        var names = [true, false];
+
+        _.each(names, function (name) {
+            expect(function () {
+                formlyValidator.register(name, function () {
+                });
+            }).toThrowError();
+        });
+
+        // check transformers
+        expect(formlyTransformer._transformers.length).toBe(0);
+    });
+
+    it('should register validator using strings as names which match pattern', function () {
+        var names = ["", "s", "s1", "s.2", "s._", "123", "aaaa23", "aa", "AA"];
+
+        _.each(names, function (name) {
+            expect(function () {
+                formlyValidator.register(name, function () {
+                });
+            }).toThrowError();
+        });
+
+        // check transformers
+        expect(formlyTransformer._transformers.length).toBe(0);
+
+        expect(function () {
+            formlyValidator.register('test', function () {
+            });
+        }).not.toThrowError();
+
+        // check transformers
+        expect(formlyTransformer._transformers.length).toBe(1);
+    });
+
+    it('should not register validator with empty expression', function () {
+        var expressions = [null, undefined, ""];
+        _.each(expressions, function (expr) {
+            expect(function () {
+                formlyValidator.register('test', expr);
+            }).toThrowError();
+        });
+
+        // check transformers
+        expect(formlyTransformer._transformers.length).toBe(0);
+    });
+
+    it('should not register validator with number as expression', function () {
+        var expressions = [1, 0, 2, "1", "0", "2", 1.2, 0.2, 2.1, "1.2", "0.2", "2.1"];
+        _.each(expressions, function (expr) {
+            expect(function () {
+                formlyValidator.register('test', expr);
+            }).toThrowError();
+        });
+
+        // check transformers
+        expect(formlyTransformer._transformers.length).toBe(0);
+    });
+
+    it('should not register validator with string as expression', function () {
+        var expressions = ["", "expression", "1", "undefined", "null"];
+        _.each(expressions, function (expr) {
+            expect(function () {
+                formlyValidator.register('test', expr);
+            }).toThrowError();
+        });
+
+        // check transformers
+        expect(formlyTransformer._transformers.length).toBe(0);
+    });
+
+    it('should not register validator with object as expression', function () {
+        var expressions = [{}, {test: 1}, [], ['1']];
+        _.each(expressions, function (expr) {
+            expect(function () {
+                formlyValidator.register('test', expr);
+            }).toThrowError();
+        });
+
+        // check transformers
+        expect(formlyTransformer._transformers.length).toBe(0);
+    });
+
+    it('should register validator with function as expression', function () {
+        expect(function () {
+            formlyValidator.register('test', function() {});
+        }).not.toThrowError();
+        // check transformers
+        expect(formlyTransformer._transformers.length).toBe(1);
     });
 
 });
