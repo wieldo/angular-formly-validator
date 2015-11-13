@@ -14,6 +14,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Tests of notpattern validator
 - Tests of maxnumber validator
 - Support of floats in maxnumber validator
+- Tests of minnumber validator
+- Support of floats in minnumber validator
 
 ### Fixed
 - Not throwing errors when expression is missing or not a function
