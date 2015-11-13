@@ -1,4 +1,4 @@
-FormlyValidator
+FormlyValidator [![Build Status](https://travis-ci.org/wieldo/angular-formly-validator.svg)](https://travis-ci.org/wieldo/angular-formly-validator)
 ==========
 
 Automate fields validation in [Angular-Formly].
