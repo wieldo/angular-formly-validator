@@ -10,6 +10,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Tests of maxlength validator
 - Tests of minlength validator
 - Tests of required validator
+- Tests of pattern validator
+- Tests of notpattern validator
 
 ### Fixed
 - Not throwing errors when expression is missing or not a function
