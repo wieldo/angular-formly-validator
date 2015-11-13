@@ -5,7 +5,7 @@ var server = 'server';
 Package.describe({
     name: "wieldo:angular-formly-validator",
     summary: "Use set of built-in validators in your project. This module extends angular-formly-transformer.",
-    version: "1.0.0",
+    version: "1.1.0",
 
     documentation: 'README.md',
     git: 'https://github.com/wieldo/angular-formly-validator.git'
