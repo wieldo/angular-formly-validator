@@ -1,5 +1,8 @@
-FormlyValidator [![Build Status](https://travis-ci.org/wieldo/angular-formly-validator.svg)](https://travis-ci.org/wieldo/angular-formly-validator)
+FormlyValidator
 ==========
+
+[![Build Status](https://travis-ci.org/wieldo/angular-formly-validator.svg)](https://travis-ci.org/wieldo/angular-formly-validator)
+[![Coverage Status](https://coveralls.io/repos/wieldo/angular-formly-validator/badge.svg?branch=master&service=github)](https://coveralls.io/github/wieldo/angular-formly-validator?branch=master)
 
 Automate fields validation in [Angular-Formly].
 
