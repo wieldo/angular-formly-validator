@@ -1,8 +1,10 @@
 FormlyValidator
 ==========
 
+[![GitHub version](https://badge.fury.io/gh/wieldo%2Fangular-formly-validator.svg)](https://badge.fury.io/gh/wieldo%2Fangular-formly-validator)
 [![Build Status](https://travis-ci.org/wieldo/angular-formly-validator.svg)](https://travis-ci.org/wieldo/angular-formly-validator)
 [![Coverage Status](https://coveralls.io/repos/wieldo/angular-formly-validator/badge.svg?branch=master&service=github)](https://coveralls.io/github/wieldo/angular-formly-validator?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/3c02fde9b6c7447aa72684c2cf0a2a84)](https://www.codacy.com/app/mys-sterowiec/angular-formly-validator)
 
 Automate fields validation in [Angular-Formly].
 

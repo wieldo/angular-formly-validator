@@ -1,9 +1,17 @@
-describe('formlyValidator', function () {
-    var formlyValidator;
-    var formlyTransformer;
-    var transformersLength = 0;
+describe('formlyValidator', () => {
+    //
+    // vars
+    //
 
-    beforeEach(function () {
+    let formlyValidator;
+    let formlyTransformer;
+    let transformersLength = 0;
+
+    //
+    // tests
+    //
+
+    beforeEach(() => {
         module('formlyValidator');
 
         inject(function (_formlyValidator_, _formlyTransformer_) {
@@ -13,8 +21,8 @@ describe('formlyValidator', function () {
         });
     });
 
-    it('should be able to parse RegExp', function () {
-        var objects = [];
+    it('should be able to parse RegExp', () => {
+        const objects = [];
 
         // valid
         objects.push({
@@ -54,7 +62,7 @@ describe('formlyValidator', function () {
         });
 
         objects.push({
-            value: function () {
+            value: () => {
             },
             expected: undefined
         });
@@ -64,43 +72,43 @@ describe('formlyValidator', function () {
             expected: undefined
         });
 
-        _.each(objects, function (obj) {
+        objects.forEach((obj) => {
             expect(formlyValidator.parseRegExp(obj.value)).toEqual(obj.expected);
         });
     });
 
-    it('should be able to check empty value', function () {
-        var emptyValues = [
+    it('should be able to check empty value', () => {
+        const emptyValues = [
             null, undefined, ""
         ];
-        var notEmptyValues = [
-            function () {
+        const notEmptyValues = [
+            () => {
             }, {}, true, false, " ", 1, 0, -1, "1", "0", "-1", "s", "undefined", "null"
         ];
 
         // empty
-        _.each(emptyValues, function (val) {
+        emptyValues.forEach((val) => {
             expect(formlyValidator.isEmpty(val)).toBeTruthy();
         });
         // not empty
-        _.each(notEmptyValues, function (val) {
+        notEmptyValues.forEach((val) => {
             expect(formlyValidator.isEmpty(val)).toBeFalsy();
         });
     });
 
-    it('should be able to create error with prefixed message', function () {
-        expect(function () {
+    it('should be able to create error with prefixed message', () => {
+        expect(() => {
             throw formlyValidator.createError("test");
         }).toThrowError(Error, "[formlyValidator] test");
 
-        expect(function () {
+        expect(() => {
             formlyValidator.createError("test");
         }).not.toThrowError();
     });
 
-    it('should be able to set field validator', function () {
+    it('should be able to set field validator', () => {
         // empty field
-        var field = {
+        let field = {
             key: 'test'
         };
 
@@ -158,8 +166,8 @@ describe('formlyValidator', function () {
 
     });
 
-    it('should be able to get field validator', function () {
-        var fields = [
+    it('should be able to get field validator', () => {
+        const fields = [
             {
                 field: {
                     key: 'test'
@@ -195,17 +203,17 @@ describe('formlyValidator', function () {
             }
         ];
 
-        _.each(fields, function (field) {
+        fields.forEach((field) => {
             expect(formlyValidator.getFieldValidator(field.field, 'required')).toEqual(field.expected);
         });
     });
 
-    it('should not register validator with empty name', function () {
-        var names = [null, undefined, ""];
+    it('should not register validator with empty name', () => {
+        const names = [null, undefined, ""];
 
-        _.each(names, function (name) {
-            expect(function () {
-                formlyValidator.register(name, function () {
+        names.forEach((name) => {
+            expect(() => {
+                formlyValidator.register(name, () => {
                 });
             }).toThrowError();
         });
@@ -214,12 +222,12 @@ describe('formlyValidator', function () {
         expect(formlyTransformer._transformers.length).toBe(transformersLength);
     });
 
-    it('should not register validator using numbers as name', function () {
-        var names = [1, 0, 2, "1", "0", "2", 1.2, 2.1, -1, "1.2"];
+    it('should not register validator using numbers as name', () => {
+        const names = [1, 0, 2, "1", "0", "2", 1.2, 2.1, -1, "1.2"];
 
-        _.each(names, function (name) {
-            expect(function () {
-                formlyValidator.register(name, function () {
+        names.forEach((name) => {
+            expect(() => {
+                formlyValidator.register(name, () => {
                 });
             }).toThrowError();
         });
@@ -228,12 +236,12 @@ describe('formlyValidator', function () {
         expect(formlyTransformer._transformers.length).toBe(transformersLength);
     });
 
-    it('should not register validator using boolean values as name', function () {
-        var names = [true, false];
+    it('should not register validator using boolean values as name', () => {
+        const names = [true, false];
 
-        _.each(names, function (name) {
-            expect(function () {
-                formlyValidator.register(name, function () {
+        names.forEach((name) => {
+            expect(() => {
+                formlyValidator.register(name, () => {
                 });
             }).toThrowError();
         });
@@ -242,12 +250,12 @@ describe('formlyValidator', function () {
         expect(formlyTransformer._transformers.length).toBe(transformersLength);
     });
 
-    it('should register validator using strings as names which match pattern', function () {
-        var names = ["", "s", "s1", "s.2", "s._", "123", "aaaa23", "aa", "AA"];
+    it('should register validator using strings as names which match pattern', () => {
+        const names = ["", "s", "s1", "s.2", "s._", "123", "aaaa23", "aa", "AA"];
 
-        _.each(names, function (name) {
-            expect(function () {
-                formlyValidator.register(name, function () {
+        names.forEach((name) => {
+            expect(() => {
+                formlyValidator.register(name, () => {
                 });
             }).toThrowError();
         });
@@ -255,8 +263,8 @@ describe('formlyValidator', function () {
         // check transformers
         expect(formlyTransformer._transformers.length).toBe(transformersLength);
 
-        expect(function () {
-            formlyValidator.register('test', function () {
+        expect(() => {
+            formlyValidator.register('test', () => {
             });
         }).not.toThrowError();
 
@@ -264,10 +272,10 @@ describe('formlyValidator', function () {
         expect(formlyTransformer._transformers.length).toEqual(transformersLength + 1);
     });
 
-    it('should not register validator with empty expression', function () {
-        var expressions = [null, undefined, ""];
-        _.each(expressions, function (expr) {
-            expect(function () {
+    it('should not register validator with empty expression', () => {
+        const expressions = [null, undefined, ""];
+        expressions.forEach((expr) => {
+            expect(() => {
                 formlyValidator.register('test', expr);
             }).toThrowError();
         });
@@ -276,10 +284,10 @@ describe('formlyValidator', function () {
         expect(formlyTransformer._transformers.length).toBe(transformersLength);
     });
 
-    it('should not register validator with number as expression', function () {
-        var expressions = [1, 0, 2, "1", "0", "2", 1.2, 0.2, 2.1, "1.2", "0.2", "2.1"];
-        _.each(expressions, function (expr) {
-            expect(function () {
+    it('should not register validator with number as expression', () => {
+        const expressions = [1, 0, 2, "1", "0", "2", 1.2, 0.2, 2.1, "1.2", "0.2", "2.1"];
+        expressions.forEach((expr) => {
+            expect(() => {
                 formlyValidator.register('test', expr);
             }).toThrowError();
         });
@@ -288,10 +296,10 @@ describe('formlyValidator', function () {
         expect(formlyTransformer._transformers.length).toBe(transformersLength);
     });
 
-    it('should not register validator with string as expression', function () {
-        var expressions = ["", "expression", "1", "undefined", "null"];
-        _.each(expressions, function (expr) {
-            expect(function () {
+    it('should not register validator with string as expression', () => {
+        const expressions = ["", "expression", "1", "undefined", "null"];
+        expressions.forEach((expr) => {
+            expect(() => {
                 formlyValidator.register('test', expr);
             }).toThrowError();
         });
@@ -300,10 +308,10 @@ describe('formlyValidator', function () {
         expect(formlyTransformer._transformers.length).toBe(transformersLength);
     });
 
-    it('should not register validator with object as expression', function () {
-        var expressions = [{}, {test: 1}, [], ['1']];
-        _.each(expressions, function (expr) {
-            expect(function () {
+    it('should not register validator with object as expression', () => {
+        const expressions = [{}, {test: 1}, [], ['1']];
+        expressions.forEach((expr) => {
+            expect(() => {
                 formlyValidator.register('test', expr);
             }).toThrowError();
         });
@@ -312,9 +320,9 @@ describe('formlyValidator', function () {
         expect(formlyTransformer._transformers.length).toBe(transformersLength);
     });
 
-    it('should register validator with function as expression', function () {
-        expect(function () {
-            formlyValidator.register('test', function () {
+    it('should register validator with function as expression', () => {
+        expect(() => {
+            formlyValidator.register('test', () => {
             });
         }).not.toThrowError();
         // check transformers

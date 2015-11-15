@@ -1,15 +1,42 @@
-describe('formlyValidator maxlength validator', function () {
-    // injectables
-    var formlyTransformer;
-    var $compile;
-    var $rootScope;
+describe('formlyValidator maxlength validator', () => {
+    //
+    // vars
+    //
+    
+    let formlyTransformer;
+    let $compile;
+    let $rootScope;
+    let $scope;
+    let field;
+    const maxlength = 5;
     
     //
-    var $scope;
-    var field;
-    var maxlength = 5;
+    // helpers
+    //
 
-    beforeEach(function () {
+    const validate = (value) => {
+        return testUtils.validate(value, field, $scope);
+    };
+
+    const compile = () => {
+        $scope = $rootScope.$new();
+        const setup = testUtils.setupCompile({
+            name: 'maxlength',
+            value: maxlength
+        }, $scope, formlyTransformer);
+
+        $compile(setup.element)($scope);
+
+        field = $scope[setup.formName][setup.fieldName];
+
+        $scope.$digest();
+    };
+    
+    //
+    // tests
+    //
+
+    beforeEach(() => {
         angular.module('testApp', ['angular-meteor', 'formly', 'formlyValidator', 'ngMock']);
 
         module('testApp');
@@ -22,35 +49,17 @@ describe('formlyValidator maxlength validator', function () {
 
         compile();
     });
-    
-    it('should be falsy on too long value', function() {
+
+    it('should be falsy on too long value', () => {
         expect(validate("testfailed")).toBeFalsy();
     });
-    
-    it('should be truthy on valid values', function() {
+
+    it('should be truthy on valid values', () => {
         expect(validate("test")).toBeTruthy();
     });
-    
-    it('should be truthy on empty values', function() {
+
+    it('should be truthy on empty values', () => {
         expect(validate("")).toBeTruthy();
     });
-    
-    function validate(value) {
-        return testUtils.validate(value, field, $scope);
-    }
 
-    function compile() {
-        $scope = $rootScope.$new();
-        var setup = testUtils.setupCompile({
-            name: 'maxlength',
-            value: maxlength
-        }, $scope, formlyTransformer);
-
-        $compile(setup.element)($scope);
-
-        field = $scope[setup.formName][setup.fieldName];
-
-        $scope.$digest();
-    }
-    
 });

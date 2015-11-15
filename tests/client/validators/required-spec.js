@@ -1,14 +1,40 @@
-describe('formlyValidator required validator', function () {
-    // injectables
-    var formlyTransformer;
-    var $compile;
-    var $rootScope;
+describe('formlyValidator required validator', () => {
+    //
+    // vars
+    //
+    let formlyTransformer;
+    let $compile;
+    let $rootScope;
+    let $scope;
+    let field;
 
     //
-    var $scope;
-    var field;
+    // helpers
+    //
 
-    beforeEach(function () {
+    const validate = (value) => {
+        return testUtils.validate(value, field, $scope);
+    };
+
+    const compile = () => {
+        $scope = $rootScope.$new();
+        const setup = testUtils.setupCompile({
+            name: 'required',
+            value: true
+        }, $scope, formlyTransformer);
+
+        $compile(setup.element)($scope);
+
+        field = $scope[setup.formName][setup.fieldName];
+
+        $scope.$digest();
+    };
+
+    //
+    // tests
+    //
+
+    beforeEach(() => {
         angular.module('testApp', ['angular-meteor', 'formly', 'formlyValidator', 'ngMock']);
 
         module('testApp');
@@ -22,49 +48,25 @@ describe('formlyValidator required validator', function () {
         compile();
     });
 
-    it('should be falsy on empty values', function () {
+    it('should be falsy on empty values', () => {
         expect(validate("")).toBeFalsy();
     });
 
-    it('should be falsy on undefined value', function () {
+    it('should be falsy on undefined value', () => {
         expect(validate(undefined)).toBeFalsy();
     });
 
-    it('should be falsy on null value', function () {
+    it('should be falsy on null value', () => {
         expect(validate(null)).toBeFalsy();
     });
 
-    it('should be truthy on non empty value', function () {
-        var values = ["test", 1234, 0, 1, true, false, function () {
+    it('should be truthy on non empty value', () => {
+        const values = ["test", 1234, 0, 1, true, false, () => {
         }, {}, []];
-        
+
         values.forEach((value) => {
             expect(validate(value)).toBeTruthy();
         });
-        
-        /*expect(validate(1234)).toBeTruthy();
-        expect(validate(true)).toBeTruthy();
-        expect(validate(false)).toBeTruthy();
-        expect(validate(0)).toBeTruthy();
-        expect(validate(1)).toBeTruthy();*/
     });
-
-    function validate(value) {
-        return testUtils.validate(value, field, $scope);
-    }
-
-    function compile() {
-        $scope = $rootScope.$new();
-        var setup = testUtils.setupCompile({
-            name: 'required',
-            value: true
-        }, $scope, formlyTransformer);
-
-        $compile(setup.element)($scope);
-
-        field = $scope[setup.formName][setup.fieldName];
-
-        $scope.$digest();
-    }
 
 });
