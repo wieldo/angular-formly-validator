@@ -48,7 +48,8 @@ Package.onUse(function (api) {
         'lib/client/validators/notmatch.js',
         'lib/client/validators/contain.js',
         'lib/client/validators/notcontain.js',
-        'lib/client/validators/allowed.js'
+        'lib/client/validators/allowed.js',
+        'lib/client/validators/notallowed.js'
     ], client);
 
 });
