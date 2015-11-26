@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased]
+## [1.4.0] - 2015-11-26
 ### Added
 - **allowed** validator
 - **notallowed** validator
@@ -68,7 +68,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 0.0.1 - 2015-11-09
 
-[Unreleased]: https://github.com/wieldo/angular-formly-validator/compare/v1.3.0...HEAD
+[1.4.0]: https://github.com/wieldo/angular-formly-validator/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/wieldo/angular-formly-validator/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/wieldo/angular-formly-validator/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/wieldo/angular-formly-validator/compare/v1.1.0...v1.1.1
