@@ -21,8 +21,7 @@ meteor add wieldo:angular-formly-validator
 ## Getting Started
 
 1. Add package using `meteor add` (see above)
-2. Add angular-formly files to your project
-3. Add the following dependencies to your AngularJS module:
+2. Add the following dependencies to your AngularJS module:
 
 ```javascript
 angular.module('myApp', [
@@ -45,7 +44,7 @@ formlyValidator.register('required', function(config, $viewValue, $modelValue, s
 
 ### Set validator for formly field
 
-In field configuration, use structure below:
+In field configuration, use structure as in example below:
 
 ```
 {
@@ -137,6 +136,30 @@ Check if model does not match pattern (negation of pattern)
 ```
 {
     notpattern: <RegExp|string>
+}
+```
+
+### match
+
+Check if model matches the other model.
+
+Field's key as a value.
+
+```
+{
+    match: <string>
+}
+```
+
+### notmatch
+
+Check if model does not match the other model (negation of match)
+
+Field's key as a value.
+
+```
+{
+    notmatch: <string>
 }
 ```
 
