@@ -183,6 +183,16 @@ Check if model does not contain phrase of phrases.
 }
 ```
 
+### allowed
+
+Check if model equals one of allowed values.
+
+```
+{
+    allowed: <any|any[]>
+}
+```
+
 -
 
 ## Example
