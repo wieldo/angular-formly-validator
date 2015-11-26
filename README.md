@@ -163,6 +163,16 @@ Field's key as a value.
 }
 ```
 
+### contain
+
+Check if model contains phrase of phrases.
+
+```
+{
+    contain: <string|string[]>
+}
+```
+
 -
 
 ## Example
