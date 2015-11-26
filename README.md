@@ -193,6 +193,16 @@ Check if model equals one of allowed values.
 }
 ```
 
+### notallowed
+
+Check if model does not equal one of not allowed values.
+
+```
+{
+    notallowed: <any|any[]>
+}
+```
+
 -
 
 ## Example
