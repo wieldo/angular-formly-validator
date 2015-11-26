@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - **match** validator
+- **notmatch** validator
 
 ## [1.1.1] - 2015-11-18
 ### Changed

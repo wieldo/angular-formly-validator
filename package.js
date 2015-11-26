@@ -44,7 +44,8 @@ Package.onUse(function (api) {
         'lib/client/validators/maxnumber.js',
         'lib/client/validators/pattern.js',
         'lib/client/validators/notpattern.js',
-        'lib/client/validators/match.js'
+        'lib/client/validators/match.js',
+        'lib/client/validators/notmatch.js'
     ], client);
 
 });
