@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - **allowed** validator
+- **notallowed** validator
 
 ## [1.3.0] - 2015-11-26
 ### Added
