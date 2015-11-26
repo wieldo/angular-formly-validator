@@ -74,6 +74,7 @@ Package.onTest(function (api) {
         'tests/client/validators/notpattern-spec.js',
         'tests/client/validators/maxnumber-spec.js',
         'tests/client/validators/minnumber-spec.js',
-        'tests/client/validators/contain-spec.js'
+        'tests/client/validators/contain-spec.js',
+        'tests/client/validators/notcontain-spec.js'
     ], client);
 });
