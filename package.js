@@ -3,7 +3,7 @@ var client = 'client';
 Package.describe({
     name: "wieldo:angular-formly-validator",
     summary: "Use set of built-in validators in your project. This module extends angular-formly-transformer.",
-    version: "1.3.0",
+    version: "1.4.0",
 
     documentation: 'README.md',
     git: 'https://github.com/wieldo/angular-formly-validator.git'
@@ -47,7 +47,9 @@ Package.onUse(function (api) {
         'lib/client/validators/match.js',
         'lib/client/validators/notmatch.js',
         'lib/client/validators/contain.js',
-        'lib/client/validators/notcontain.js'
+        'lib/client/validators/notcontain.js',
+        'lib/client/validators/allowed.js',
+        'lib/client/validators/notallowed.js'
     ], client);
 
 });
@@ -73,6 +75,10 @@ Package.onTest(function (api) {
         'tests/client/validators/pattern-spec.js',
         'tests/client/validators/notpattern-spec.js',
         'tests/client/validators/maxnumber-spec.js',
-        'tests/client/validators/minnumber-spec.js'
+        'tests/client/validators/minnumber-spec.js',
+        'tests/client/validators/contain-spec.js',
+        'tests/client/validators/notcontain-spec.js',
+        'tests/client/validators/allowed-spec.js',
+        'tests/client/validators/notallowed-spec.js'
     ], client);
 });
