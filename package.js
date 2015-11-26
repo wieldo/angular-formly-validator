@@ -78,6 +78,7 @@ Package.onTest(function (api) {
         'tests/client/validators/minnumber-spec.js',
         'tests/client/validators/contain-spec.js',
         'tests/client/validators/notcontain-spec.js',
-        'tests/client/validators/allowed-spec.js'
+        'tests/client/validators/allowed-spec.js',
+        'tests/client/validators/notallowed-spec.js'
     ], client);
 });
