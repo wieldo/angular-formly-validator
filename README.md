@@ -173,6 +173,16 @@ Check if model contains phrase of phrases.
 }
 ```
 
+### notcontain
+
+Check if model does not contain phrase of phrases.
+
+```
+{
+    notcontain: <string|string[]>
+}
+```
+
 -
 
 ## Example
