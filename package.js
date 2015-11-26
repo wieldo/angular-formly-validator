@@ -46,7 +46,8 @@ Package.onUse(function (api) {
         'lib/client/validators/notpattern.js',
         'lib/client/validators/match.js',
         'lib/client/validators/notmatch.js',
-        'lib/client/validators/contain.js'
+        'lib/client/validators/contain.js',
+        'lib/client/validators/notcontain.js'
     ], client);
 
 });
