@@ -13,16 +13,14 @@ Package.onUse(function (api) {
 
     var packages = {
         use: [
-            'angular@1.0.0',
-            'angular:angular@1.4.7',
+            'angular:angular@1.4.0',
             'underscore@1.0.4',
             'pbastowski:angular-babel@1.0.2',
-            'pbastowski:angular2-now@0.3.13',
-            'wieldo:angular-formly@7.3.2',
+            'formly:angular-formly@7.3.9_3',
             'wieldo:angular-formly-transformer@1.0.0'
         ],
         imply: [
-            'wieldo:angular-formly',
+            'formly:angular-formly',
             'wieldo:angular-formly-transformer'
         ]
     };
@@ -57,8 +55,7 @@ Package.onUse(function (api) {
 Package.onTest(function (api) {
     api.use([
         'pbastowski:angular-babel@1.0.2',
-        'pbastowski:angular2-now@0.3.13',
-        'sanjo:jasmine@0.20.2',
+        'sanjo:jasmine@0.21.0',
         'velocity:helpers',
         'velocity:console-reporter',
         'angular:angular-mocks@1.4.7',
