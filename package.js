@@ -54,6 +54,7 @@ Package.onUse(function (api) {
 
 Package.onTest(function (api) {
     api.use([
+        'angular@1.3.0',
         'pbastowski:angular-babel@1.0.2',
         'sanjo:jasmine@0.21.0',
         'velocity:helpers',
