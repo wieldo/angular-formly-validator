@@ -17,7 +17,7 @@ Package.onUse(function (api) {
             'underscore@1.0.4',
             'pbastowski:angular-babel@1.0.2',
             'formly:angular-formly@7.3.9_3',
-            'wieldo:angular-formly-transformer@1.0.0'
+            'wieldo:angular-formly-transformer@1.3.0'
         ],
         imply: [
             'formly:angular-formly',
